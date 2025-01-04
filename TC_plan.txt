@@ -1,0 +1,119 @@
+### Comprehensive Test Plan for the Revised FlashLoanArbitrage Contract
+
+#### Objective
+To verify the complete lifecycle and functionality of the `FlashLoanArbitrage` contract using mock contracts and covering the following aspects:
+- Successful flash loan execution
+- Proper fee and loan repayment
+- Accurate profit realization and transfer
+- Resilience to edge cases such as insufficient liquidity and trade failures
+
+---
+
+### **1. Test Case Overview**
+The following test cases will be implemented to ensure comprehensive coverage:
+
+| **Test Case ID** | **Description** | **Expected Outcome** |
+|-------------------|-----------------|-----------------------|
+| TC-01 | Test Flash Loan Execution Start to Finish | Flash loan executed, balance updated, and no errors encountered. |
+| TC-02 | Test Fee Repayment Accuracy | Flash loan fee repaid accurately, with the correct balance in the pool. |
+| TC-03 | Test Arbitrage Profit Realization | Arbitrage profits calculated and transferred to the profit wallet. |
+| TC-04 | Test Profit Wallet Transfer | Profits transferred to the designated wallet successfully. |
+| TC-05 | Test Insufficient Liquidity Revert | Revert occurs if insufficient liquidity in the pool. |
+| TC-06 | Test Gas Usage Optimization | Gas usage for a flash loan is below a reasonable threshold. |
+| TC-07 | Test Multiple Flash Loans in Sequence | Multiple loans executed without errors, balances updated correctly. |
+| TC-08 | Test Trade Failure Reverts | Revert occurs if the trade fails during arbitrage execution. |
+| TC-09 | Test Flash Loan Arbitrage Lifecycle | Full lifecycle tested, with flash loan, arbitrage, repayment, and profit transfer validated. |
+| TC-10 | Test No Profit Scenario | Ensures that the profit wallet balance remains zero when no arbitrage opportunities exist. |
+
+---
+
+### **2. Setup Requirements**
+- **Mock Contracts**:
+  - MockPool: Simulates the Aave pool.
+  - MockFlashLoanReceiver: Simulates a flash loan receiver contract.
+  - ERC20Mock: Simulates ERC20 tokens for testing.
+- **Deployment**:
+  - Deploy the `FlashLoanArbitrage` contract with mock dependencies.
+- **Initial Setup**:
+  - Assign initial balances to mock tokens.
+  - Approve token transfers for the `FlashLoanArbitrage` contract.
+
+---
+
+### **3. Test Execution Steps**
+
+#### **TC-01: Flash Loan Execution Start to Finish**
+1. Setup mock pool with sufficient liquidity.
+2. Initiate a flash loan for a specific amount.
+3. Validate that the borrowed amount is received and repaid correctly.
+
+#### **TC-02: Fee Repayment Accuracy**
+1. Setup a flash loan with a mock fee.
+2. Execute the flash loan lifecycle.
+3. Validate that the pool balance includes the loan amount plus the fee.
+
+#### **TC-03: Arbitrage Profit Realization**
+1. Simulate arbitrage trades with mock tokens.
+2. Validate that the profit is calculated and transferred to the profit wallet.
+
+#### **TC-04: Profit Wallet Transfer**
+1. Simulate profits within the `FlashLoanArbitrage` contract.
+2. Trigger profit transfer to the designated wallet.
+3. Validate the profit wallet balance.
+
+#### **TC-05: Insufficient Liquidity Revert**
+1. Attempt to initiate a flash loan with insufficient pool liquidity.
+2. Validate that the transaction reverts with the expected error message.
+
+#### **TC-06: Gas Usage Optimization**
+1. Execute a flash loan operation.
+2. Measure gas consumption during the transaction.
+3. Validate that the gas used is within an acceptable range.
+
+#### **TC-07: Multiple Flash Loans in Sequence**
+1. Execute two flash loans sequentially.
+2. Validate that both transactions succeed and balances are updated correctly.
+
+#### **TC-08: Trade Failure Reverts**
+1. Simulate a trade failure during arbitrage execution.
+2. Validate that the transaction reverts with the expected error message.
+
+#### **TC-09: Flash Loan Arbitrage Lifecycle**
+1. Simulate the entire lifecycle: flash loan, arbitrage, repayment, and profit transfer.
+2. Validate all balances and transfers.
+
+#### **TC-10: No Profit Scenario**
+1. Simulate an arbitrage scenario where no profit is generated.
+2. Validate that the profit wallet balance remains zero.
+
+---
+
+### **4. Tools and Frameworks**
+- **Forge**: For testing Solidity smart contracts.
+- **Mock Contracts**: Provided by OpenZeppelin and custom implementations.
+- **Gas Profiling**: Validate gas consumption during flash loan operations.
+
+---
+
+### **5. Expected Outcomes**
+1. All flash loan and arbitrage functionalities should pass the test cases.
+2. Gas usage should remain optimized and within acceptable thresholds.
+3. The contract should handle edge cases gracefully, ensuring robustness.
+4. Profits should be accurately calculated and transferred to the profit wallet.
+
+---
+
+### **6. Reporting and Metrics**
+- **Pass/Fail**: For each test case, record if the functionality behaves as expected.
+- **Gas Usage**: Log gas usage for TC-06 and compare against historical benchmarks.
+- **Revert Messages**: Ensure revert scenarios return meaningful error messages.
+
+---
+
+### **7. Next Steps**
+After successful test completion:
+1. Deploy the contract to a testnet for live testing.
+2. Integrate The Graph to monitor transactions, profits, and gas metrics.
+3. Prepare for mainnet deployment.
+
+This test plan ensures robust validation of the `FlashLoanArbitrage` contract functionality, paving the way for reliable deployment.
