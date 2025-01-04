@@ -1,3 +1,6 @@
+forge script ./scripts/DeployFlashloanArbitrage.s.sol:DeployFlashLoanArbitrage --rpc-url http://127.0.0.1:8545 --broadcast --sender 0x63Ab4c7EBA14ac7F3c6F9b8E01cbf68e7755015E will be used eventually to deploy to the different mainnets we've got forked. 
+
+
 ### Comprehensive Test Plan for the Revised FlashLoanArbitrage Contract
 
 #### Objective
