@@ -1,0 +1,22 @@
+{
+  "name": "hardhat-project",
+  "dependencies": {
+    "@aave/contract-helpers": "^1.30.5",
+    "@aave/math-utils": "^1.30.5",
+    "@bgd-labs/aave-address-book": "^4.7.2",
+    "@openzeppelin/contracts": "^5.1.0",
+    "@uniswap/permit2": "github:Uniswap/permit2",
+    "@uniswap/v3-core": "^1.0.1",
+    "@uniswap/v3-periphery": "^1.4.4",
+    "openai": "^4.77.0",
+    "solmate": "^6.8.0"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-etherscan": "^3.1.8",
+    "dotenv": "^16.4.7",
+    "eslint": "^9.17.0",
+    "ethers": "^5.7.2",
+    "hardhat": "^2.22.17"
+  }
+}

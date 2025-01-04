@@ -1,0 +1,57 @@
+# foundry.toml
+
+[profile.default]
+libs = ["lib"]
+src = "src"
+out = "out"
+tests = "test"
+mocks = "mocks"
+script = "scripts"
+solc_version = "0.8.28"  # Default Solidity version for the project
+
+remappings = [
+    "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "@aave-v3-core/=lib/aave-v3-core/",
+    "@aave-v3-origin/=lib/aave-v3-origin/",
+    "@aave-v3-periphery/=lib/aave-v3-periphery/",
+    "protocol-v3/=lib/protocol-v3/",
+    "@aave/protocol-v3/=lib/protocol-v3/",
+    "@uniswap/v3-core/=lib/v3-core/",
+    "@uniswap/v3-periphery/=lib/v3-periphery/",
+    "@uniswap/v3-staker/=lib/v3-staker/",
+    "@chainlink/contracts/=lib/chainlink/contracts/",
+    "ds-test/=lib/forge-std/src/",
+    "@forge-std/=lib/forge-std/src/",
+    "solmate/=lib/solmate/src/",
+    "aave-address-book/=lib/aave-address-book/contracts/",
+    "mocks/=mocks/",
+    "mocks/tests/=lib/aave-v3-core/contracts/mocks/tests/",
+    "mocks/tokens/=lib/aave-v3-core/contracts/mocks/tokens/",
+    "mocks/upgradeability/=lib/aave-v3-core/contracts/mocks/upgradeability/",
+    "mocks/flashloan/=lib/aave-v3-core/contracts/mocks/flashloan/",
+    "mocks/helpers/=lib/aave-v3-core/contracts/mocks/helpers/",
+    "mocks/oracle/=lib/aave-v3-core/contracts/mocks/oracle/",
+    "@aave-v3-core/contracts/mocks/=lib/aave-v3-core/contracts/mocks/",
+    "mocks/misc/=lib/aave-v3-core/contracts/misc/",
+    "IERC20.sol=@openzeppelin/contracts/token/ERC20/IERC20.sol",
+    "contracts/=src/",  # Explicit mapping to include src folder
+    "lib/gp-v2-contracts/src/contracts/libraries/=lib/gp-v2-contracts/src/contracts/libraries/"  # Correct GPv2SafeERC20 remapping
+]
+
+# Profile for supporting Solidity version 0.8.10 (used for specific contracts like MockSimpleFlashLoanReceiver)
+[profile.solc-0.8.10]
+solc_version = "0.8.10"
+
+# Specific remappings for the 0.8.10 profile to avoid conflicts
+remappings = [
+    "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "@aave-v3-core/=lib/aave-v3-core/",
+    "mocks/flashloan/=lib/aave-v3-core/contracts/mocks/flashloan/"
+]
+
+# Additional profiles for other Solidity versions can be added as needed
+# Example:
+# [profile.solc-0.7.6]
+# solc_version = "0.7.6"
