@@ -36,22 +36,11 @@ remappings = [
     "mocks/misc/=lib/aave-v3-core/contracts/misc/",
     "IERC20.sol=@openzeppelin/contracts/token/ERC20/IERC20.sol",
     "contracts/=src/",  # Explicit mapping to include src folder
-    "lib/gp-v2-contracts/src/contracts/libraries/=lib/gp-v2-contracts/src/contracts/libraries/"  # Correct GPv2SafeERC20 remapping
+    "lib/gp-v2-contracts/src/contracts/libraries/=lib/gp-v2-contracts/src/contracts/libraries/"
 ]
 
 # Profile for supporting Solidity version 0.8.10 (used for specific contracts like MockSimpleFlashLoanReceiver)
 [profile.solc-0.8.10]
 solc_version = "0.8.10"
 
-# Specific remappings for the 0.8.10 profile to avoid conflicts
-remappings = [
-    "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
-    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
-    "@aave-v3-core/=lib/aave-v3-core/",
-    "mocks/flashloan/=lib/aave-v3-core/contracts/mocks/flashloan/"
-]
-
-# Additional profiles for other Solidity versions can be added as needed
-# Example:
-# [profile.solc-0.7.6]
-# solc_version = "0.7.6"
+# Additional profiles for version-specific configurations can be added as needed
