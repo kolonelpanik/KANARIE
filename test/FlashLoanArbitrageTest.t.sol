@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import "forge-std/Test.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/mocks/token/ERC20Mock.sol"; // Updated import
+import "@openzeppelin/contracts/mocks/token/ERC20Mock.sol";
 import "@aave-v3-core/contracts/mocks/flashloan/MockFlashLoanReceiver.sol";
 import "@aave-v3-core/contracts/interfaces/IPool.sol";
 import "@aave-v3-core/contracts/interfaces/IPoolAddressesProvider.sol";
@@ -38,8 +38,8 @@ contract FlashLoanArbitrageTest is Test {
         );
 
         // Set up WETH and DAI mock tokens
-        weth = address(new ERC20Mock("WETH", "Wrapped Ether", 18));
-        dai = address(new ERC20Mock("DAI", "Dai Stablecoin", 18));
+        weth = address(new ERC20Mock("Wrapped Ether", "WETH", 18));
+        dai = address(new ERC20Mock("Dai Stablecoin", "DAI", 18));
 
         // Assign initial balance to test user
         user = address(this);

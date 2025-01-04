@@ -22,17 +22,17 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 
     /**
-     * @dev Returns the value of tokens in existence.
+     * @dev Returns the total supply of tokens in existence.
      */
     function totalSupply() external view returns (uint256);
 
     /**
-     * @dev Returns the value of tokens owned by `account`.
+     * @dev Returns the amount of tokens owned by a specific account (`account`).
      */
     function balanceOf(address account) external view returns (uint256);
 
     /**
-     * @dev Moves a `value` amount of tokens from the caller's account to `to`.
+     * @dev Moves `value` tokens from the caller's account to `to`.
      *
      * Returns a boolean value indicating whether the operation succeeded.
      *
@@ -50,26 +50,22 @@ interface IERC20 {
     function allowance(address owner, address spender) external view returns (uint256);
 
     /**
-     * @dev Sets a `value` amount of tokens as the allowance of `spender` over the
-     * caller's tokens.
+     * @dev Sets `value` as the allowance of `spender` over the caller's tokens.
      *
      * Returns a boolean value indicating whether the operation succeeded.
      *
-     * IMPORTANT: Beware that changing an allowance with this method brings the risk
-     * that someone may use both the old and the new allowance by unfortunate
-     * transaction ordering. One possible solution to mitigate this race
-     * condition is to first reduce the spender's allowance to 0 and set the
-     * desired value afterwards:
-     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
+     * IMPORTANT: Beware of the race condition mentioned in
+     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729.
+     * It is recommended to first reduce the spender's allowance to 0 and then
+     * set the desired value.
      *
      * Emits an {Approval} event.
      */
     function approve(address spender, uint256 value) external returns (bool);
 
     /**
-     * @dev Moves a `value` amount of tokens from `from` to `to` using the
-     * allowance mechanism. `value` is then deducted from the caller's
-     * allowance.
+     * @dev Moves `value` tokens from `from` to `to` using the allowance mechanism.
+     * `value` is then deducted from the caller's allowance.
      *
      * Returns a boolean value indicating whether the operation succeeded.
      *
